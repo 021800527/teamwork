@@ -66,6 +66,46 @@
     </style>
 </head>
 <body id="gradient">
+<body>
+
+<form action="{{ url_for('search') }}" method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td>搜索学号:</td>
+                <td><input type="text" placeholder="请输入学号" name="tid"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="查找"></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<a href="{{ url_for('jump',id=3) }}">点击我查看所有人</a>
+
+<table>
+    <thead>
+        <th>学号        </th>   {# 第一列 #}
+        <th>来自小组        </th>    {# 第二列 #}
+        <th>投票小组        </th>
+    </thead>
+    <tbody>
+        {% for user in user1 %}
+            <tr>        {# 一个tr代表的是一行 #}
+                <td>{{ user.id }}</td>
+                <td>{{ user.from1 }}</td>
+                {% if user.to =='' %}
+                <td>还未投票</td>
+{#                    <td>{{ user.to }}</td>#}
+                {% else %}
+                <td>{{ user.to }}</td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 <div class="content" align="center">
     <div>

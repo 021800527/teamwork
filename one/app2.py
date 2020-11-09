@@ -139,6 +139,10 @@ def jump2(id):
             print(tt.number, '11')
             db.session.commit()
             db.session.commit()
+            tt = tts.query.filter_by(name=to1).first()
+            tt.number = tt.number + 1
+            print(tt.number, '11')
+            db.session.commit()
         except:
             pass
     print(user.to)
